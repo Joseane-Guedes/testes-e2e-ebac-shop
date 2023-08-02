@@ -27,7 +27,22 @@
 
 Cypress.Commands.add('login', (usuario, senha) => {
     cy.get('#username').type(usuario)
-    cy.get('#password').type(senha, {log: false})
+    cy.get('#password').type(senha, { log: false })
     cy.get('.woocommerce-form > .button').click()
 });
 
+Cypress.Commands.add('Endereco', (Nome, Sobrenome, Endereço, Casa, Cidade, Estado, Cep, Telefone, Email, senha) => {
+    cy.get('#billing_first_name').type(Nome)
+    cy.get('#billing_last_name').type(Sobrenome)
+    cy.get('#billing_address_1').type(Endereço)
+    cy.get('#billing_address_2').type(Casa)
+    cy.get('#billing_city').type(Cidade)
+    cy.get('#select2-billing_state-container').type(Estado + '{enter}')
+    cy.get('#billing_postcode').type(Cep)
+    cy.get('#billing_phone').type(Telefone)
+    cy.get('#billing_email').type(Email)
+    cy.get('#createaccount').check()
+    cy.get('#account_password').type(senha)
+    cy.get('#terms').check()
+    cy.get('#place_order').click()
+})

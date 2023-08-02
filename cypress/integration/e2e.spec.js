@@ -26,7 +26,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
 
         cy.get('[class="product-block grid"]').contains('Abominable Hoodie').click()
         cy.get('.button-variable-item-M').click()
-        cy.get('.button-variable-item-Green').click()
+        cy.get('.button-variable-item-Red').click()
         cy.get('.input-text').clear().type(quantidade)
         cy.get('.single_add_to_cart_button').click()
 
@@ -34,8 +34,16 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         cy.get('.woocommerce-message').should('contain', quantidade + ' × “Abominable Hoodie” foram adicionados no seu carrinho.')
 
         cy.visit('checkout')
+        let nome = faker.internet.userName()
+        let sobrenome = faker.internet.userName()
+        let email = faker.internet.email()
+        let senha = faker.internet.password()
+        let Rua = faker.internet.
 
-        // Travada 
+            cy.Endereco(nome, sobrenome, 'Rua teste', 'Casa', 'Cidade teste', 'São paulo', '58083-003', '(93) 3227-7144', email, senha)
+        cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.')
     });
 })
+
+
 
