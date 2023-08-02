@@ -38,9 +38,8 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         let sobrenome = faker.internet.userName()
         let email = faker.internet.email()
         let senha = faker.internet.password()
-        let Rua = faker.internet.
 
-            cy.Endereco(nome, sobrenome, 'Rua teste', 'Casa', 'Cidade teste', 'São paulo', '58083-003', '(93) 3227-7144', email, senha)
+        cy.Endereco(nome, sobrenome, 'Rua teste', 'Casa', 'Cidade teste', 'São paulo', '58083-003', '(93) 3227-7144', email, senha)
         cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.')
     });
 })
