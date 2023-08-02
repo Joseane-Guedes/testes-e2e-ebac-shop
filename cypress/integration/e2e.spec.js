@@ -20,7 +20,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
     });
 
     // Utilizando conceito de variáveis para fazer o pedido de 4 produtos 
-    // Preenchendo todas as opções de checkout com dados fakes
+    // Preenchendo algumas opções de checkout com dados fakes
     it('Deve fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
         let quantidade = 4
 
