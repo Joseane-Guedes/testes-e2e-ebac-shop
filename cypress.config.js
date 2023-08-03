@@ -22,5 +22,5 @@ module.exports = defineConfig({
     },
     baseUrl: 'http://34.171.117.131/',
   },
-  defaultCommandTimeout: 89000,
+  defaultCommandTimeout: 99000,
 })

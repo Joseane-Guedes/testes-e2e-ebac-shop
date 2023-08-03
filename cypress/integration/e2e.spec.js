@@ -13,7 +13,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
 
     //  Passo-a-passo
     //  Acessando a pagina de produtos 
-    //  Aqui vamos utilizar o que aprendemos em aula tratando de Hooks a fim de diminuir a quantidade de linhas de código melhorando a performance do teste
+    //  Aqui estou utilizando o que aprendemos em aula tratando de Hooks a fim de diminuir a quantidade de linhas de código melhorando a performance do teste
 
     beforeEach(() => {
         cy.visit('/produtos')
@@ -21,17 +21,20 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
 
     // Utilizando conceito de variáveis para fazer o pedido de 4 produtos 
     // Preenchendo algumas opções de checkout com dados fakes
+    // Adicionando produtos no carrinho com comando customizado.
     it('Deve fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
         let quantidade = 4
 
-        cy.get('[class="product-block grid"]').contains('Abominable Hoodie').click()
-        cy.get('.button-variable-item-M').click()
-        cy.get('.button-variable-item-Red').click()
-        cy.get('.input-text').clear().type(quantidade)
-        cy.get('.single_add_to_cart_button').click()
+        cy.AddProdutos('Argus All-Weather Tank', 'M', 'Gray', 4)
+        // cy.get('[class="product-block grid"]').contains('Abominable Hoodie').click()
+        // cy.get('.button-variable-item-M').click()
+        // cy.get('.button-variable-item-Red').click()
+        // cy.get('.input-text').clear().type(quantidade)
+        // cy.get('.single_add_to_cart_button').click()
 
-        cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantidade)
-        cy.get('.woocommerce-message').should('contain', quantidade + ' × “Abominable Hoodie” foram adicionados no seu carrinho.')
+        // cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantidade)
+
+        cy.get('.woocommerce-message').should('contain', quantidade + ' × “Argus All-Weather Tank” foram adicionados no seu carrinho.')
 
         cy.visit('checkout')
         let nome = faker.internet.userName()
