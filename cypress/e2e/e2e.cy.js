@@ -13,7 +13,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         cy.Produtos('Abominable Hoodie', 'XS', 'Blue')
 
         cy.visit('/produtos/page/2')
-        cy.Produtos('Atomic Endurance Running Tee(Crew - Neck)', 'M', 'Black')
+        cy.Produtos('Atomic Endurance Running Tee (V-neck)', 'M', 'Blue')
 
         cy.visit('/produtos/page/2')
         cy.Produtos('Augusta Pullover Jacket', 'M', 'Red')

@@ -22,5 +22,4 @@ module.exports = defineConfig({
     },
     baseUrl: 'http://lojaebac.ebaconline.art.br/',
   },
-  defaultCommandTimeout: 99000,
 })
