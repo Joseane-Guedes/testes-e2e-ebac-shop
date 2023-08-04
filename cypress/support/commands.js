@@ -47,11 +47,11 @@ Cypress.Commands.add('Endereco', (Nome, Sobrenome, Endereço, Casa, Cidade, Esta
     cy.get('#place_order').click()
 })
 
+Cypress.Commands.add('Produtos', (Produto, Tamanho, Cor) => {
+    cy.contains('[class="product-block grid"]', Produto).click()
+    cy.get(`.button-variable-item-${Tamanho}`).click()
+    cy.get(`.button-variable-item-${Cor}`).click()
 
-Cypress.Commands.add('AddProdutos', (produto, tamanho, cor, quantidade) => {
-    cy.get('[class="product-block grid"]').contains(produto).click()
-    cy.get('.button-variable-item-' + tamanho).click()
-    cy.get('.button-variable-item-' + cor).click()
-    cy.get('.input-text').clear().type(quantidade)
     cy.get('.single_add_to_cart_button').click()
 })
+

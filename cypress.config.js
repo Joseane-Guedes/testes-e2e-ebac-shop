@@ -20,7 +20,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       return require('./cypress/plugins/index.js')(on, config)
     },
-    baseUrl: 'http://34.171.117.131/',
+    baseUrl: 'http://lojaebac.ebaconline.art.br/',
   },
   defaultCommandTimeout: 99000,
 })

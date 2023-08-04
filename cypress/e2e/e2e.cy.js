@@ -1,6 +1,4 @@
-/// <reference types="cypress" />
 import { faker } from '@faker-js/faker';
-
 
 context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
     /*  Como cliente 
@@ -10,28 +8,21 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         Adicionando ao carrinho
         Preenchendo todas opções no checkout
         E validando minha compra ao final */
-
-    //  Passo-a-passo
-    //  Acessando a pagina de produtos 
-    //  Aqui vamos utilizar o que aprendemos em aula tratando de Hooks a fim de diminuir a quantidade de linhas de código melhorando a performance do teste
-
-    beforeEach(() => {
-        cy.visit('/produtos')
-    });
-
-    // Utilizando conceito de variáveis para fazer o pedido de 4 produtos 
-    // Preenchendo todas as opções de checkout com dados fakes
     it('Deve fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
-        let quantidade = 4
+        cy.visit('/produtos')
+        cy.Produtos('Abominable Hoodie', 'XS', 'Blue')
 
-        cy.get('[class="product-block grid"]').contains('Abominable Hoodie').click()
-        cy.get('.button-variable-item-M').click()
-        cy.get('.button-variable-item-Red').click()
-        cy.get('.input-text').clear().type(quantidade)
-        cy.get('.single_add_to_cart_button').click()
+        cy.visit('/produtos/page/2')
+        cy.Produtos('Augusta Pullover Jacket', 'M', 'Red')
 
-        cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantidade)
-        cy.get('.woocommerce-message').should('contain', quantidade + ' × “Abominable Hoodie” foram adicionados no seu carrinho.')
+        cy.visit('/produtos/page/2')
+        cy.Produtos('Atomic Endurance Running Tee (Crew-Neck)', 'M', 'Blue')
+
+        cy.visit('/produtos/page/2')
+        cy.Produtos('Autumn Pullie', 'M', 'Purple')
+
+        cy.visit('carrinho')
+        cy.get('tr.cart_item').should('have.length', 3)
 
         cy.visit('checkout')
         let nome = faker.internet.userName()
