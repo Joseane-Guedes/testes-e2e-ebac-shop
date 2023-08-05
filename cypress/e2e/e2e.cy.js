@@ -8,21 +8,26 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         Adicionando ao carrinho
         Preenchendo todas opções no checkout
         E validando minha compra ao final */
+
+    beforeEach(() => {
+        cy.login()
+    });
     it('Deve fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
-        cy.visit('/produtos')
-        cy.Produtos('Abominable Hoodie', 'XS', 'Blue')
+        cy.visit('produtos')
+        cy.AddProdutos('Abominable Hoodie', 'XS', 'Blue')
 
-        cy.visit('/produtos/page/2')
-        cy.Produtos('Atomic Endurance Running Tee (V-neck)', 'M', 'Blue')
+        cy.visit('produtos/page/2')
+        cy.AddProdutos('Atomic Endurance Running Tee (V-neck)', 'M', 'Blue')
 
-        cy.visit('/produtos/page/2')
-        cy.Produtos('Augusta Pullover Jacket', 'M', 'Red')
+        cy.visit('produtos/page/2')
+        cy.AddProdutos('Augusta Pullover Jacket', 'M', 'Red')
 
-        cy.visit('/produtos/page/2')
-        cy.Produtos('Autumn Pullie', 'M', 'Purple')
+        cy.visit('produtos/page/2')
+        cy.AddProdutos('Autumn Pullie', 'M', 'Purple')
 
         cy.visit('carrinho')
-        cy.get('tr.cart_item').should('have.length', 3)
+
+        cy.get('tr.cart_item').should('have.length', 4)
 
         cy.visit('checkout')
         let nome = faker.internet.userName()
