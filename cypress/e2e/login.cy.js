@@ -32,6 +32,10 @@ context('Funcionalidade Login', () => {
         cy.get('#password').type(dadosLogin.senha, { log: false })
         cy.get('.woocommerce-form > .button').click()
         cy.get('.page-title').should('contain', 'Minha conta')
-        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, Aluno (não é Aluno? Sair)')
+        // cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, aluno_ebac(não é aluno_ebac ? Sair)')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').contains('Olá, aluno_ebac').should('be.visible');
+
     })
 })
+
+//  Add verificação mais flexível usando a função .contains() - Motivo: Possivelmente houve mudanca no html do site ebacshop
